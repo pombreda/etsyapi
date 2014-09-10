@@ -36,17 +36,20 @@ for making OAuth 1.0 calls in v2 of the Etsy API.
 
 ### Submit the Locale
 
-We expect the locale information to be submitted in the
-"X-Detected-Locale" header as a pipe delimited tuple of 3 elements:
+We expect the locale information to be submitted
+as a pipe delimited tuple of 3 elements:
 
 1. Currency
 2. Language
 3. Region
 
-Examples of the locale header contents might be:
+Examples of the locale contents might be:
 
 * `USD|en-US|US`
 * `EUR|fr|EU`
+
+The locale should be submitted in the "X-Detected-Locale" header
+or in the bootstrap_locale GET parameter.
 
 ## Examples for Curl
 
@@ -56,7 +59,7 @@ that **does** require OAuth.
 
 ```
 curl -H "x-api-key: <your-key-here>" -H "X-Detected-Locale: USD|en|US" https://openapi.etsy.com/v3/public/ping
-curl -H "x-api-key: <your-key-here>" -H "Authorization: Bearer <your-oauth-token-here>" https://openapi.etsy.com/v3/member/emails
+curl -H "x-api-key: <your-key-here>" -H "Authorization: Bearer <your-oauth-token-here>" 'https://openapi.etsy.com/v3/member/emails?bootstrap_locale=EUR|de|EU'
 ```
 
 Perspectives
